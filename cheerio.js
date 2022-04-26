@@ -5,11 +5,7 @@ const cron = require("node-cron");
 const moment = require("moment");
 const request = require("request");
 
-const blogNameList = [
-  "수수한 여자의 수수한 일상",
-  "고고에프앤디 GOGOF&D",
-  "미란다의 워너비 모델",
-];
+
 
 (async () => {
   let searchUrl = "https://search.naver.com/search.naver?ie=UTF-8&query=";
@@ -39,11 +35,7 @@ const blogNameList = [
         let blogTitle = "";
         let selectedTitle = "";
 
-        let idx = {
-          "수수한 여자의 수수한 일상": 0,
-          "고고에프앤디 GOGOF&D": 0,
-          "미란다의 워너비 모델": 0,
-        };
+        
 
         for (let i = 0; i < blogTitleList.length; i++) {
           blogName = $(blogTitleList[i]).find(".sub_txt.sub_name").text();
@@ -61,16 +53,7 @@ const blogNameList = [
           }
         }
 
-        for (let key in idx) {
-          if (idx[key] === 0) {
-            await models.Blog.create({
-              title: "키워드가 없습니다.",
-              blog: key,
-              keyword: data,
-              rank: idx[key],
-            });
-          }
-        }
+        
       });
     });
   });
