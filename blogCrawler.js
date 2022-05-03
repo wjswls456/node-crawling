@@ -10,6 +10,7 @@ const sleep = (ms) => {
 
 (async () => {
   let searchUrl = "https://search.naver.com/search.naver?query=";
+  //headers에 부분에 User-Agent 추가 해야함 
   let customHeaderRequest = request.defaults({
     headers: {
       "User-Agent":
